@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doppe JS Demo</title>
+    <script type="text/javascript" src="doppe.js"></script>
+    <script type="text/javascript">
+        function init()
+        {
+            var d =new Doppe('#draggable', '.handler');
+            d.set('offsetTop', 16);
+        }
+    </script>
+    <style type="text/css">
+        @import url(https://fonts.googleapis.com/css?family=Roboto+Condensed:400,400italic,700,700italic,300italic,300&subset=latin,cyrillic);
+        * { -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; }
+        html, body { color: #cecece; margin: 0; padding: 0; background: teal; height: 100%; font-family: 'Roboto Condensed', sans-serif; font-size: 16px; }
+        a { text-decoration: none; color: white; }
+        form, .wrap { display: block; width: 600px; margin: 5% auto; }
+        nav { padding: 12px 32px; background: #444; }
+        nav a { display: inline-block; margin: 0 10px; }
+        nav a#logo { font-weight: 600; font-size: 22px; color: lightcoral; }
+        nav a#logo:first-letter { color: dodgerblue; }
+        h1, h2, h3, h4, h5, h6 { color: #fff; font-weight: 100; border-bottom: 1px double #ffffff; }
+        h1 { font-size: 36px; } h2 { font-size: 28px; } h3 { font-size: 24px; }
+        h4 { font-size: 20px; } h5 { font-size: 18px; } h6 { font-size: 16px; }
+        pre { color: crimson; background: #f5f5f5; border: 1px solid #eee; padding: 0 0 10px 0; overflow: auto; max-height: 300px; max-width: 100%; }
+        pre { box-shadow: -4px -4px 3px -3px #333; border-radius: 2px; }
+        .handler { background: #333; color: white; padding: 15px 20px; font-size: 24px; }
+        .moveable .handler { background: darkred; }
+    </style>
+</head>
+<body onload="init()">
+<nav>
+    <a id="logo" href="https://github.com/Max201/miraxjs" target="_blank">doppe.js</a>
+</nav>
+<section class="wrap">
+    <h1>doppe.js</h1>
+    <p>Lightweight JS-Drag'n'Drop library on pure js</p>
+
+    <h3>Quick Start</h3>
+<pre>
+&lt;script type="text/javascript" src="doppe.js"&gt;&lt;/script&gt;
+</pre>
+
+    <h3>Usage</h3>
+<pre id="draggable">
+<header class="handler" style="cursor: move;">Move by this element</header>
+    &lt;script type="text/javascript">
+        var d = new Doppe('#draggable', '.handler');
+    &lt;/script>
+    &lt;div id="draggable">
+        &lt;header class="handler">Drag&lt;/header>
+        &lt;div class="body">
+            &lt;h1>This element is draggable&lt;/h1>
+        &lt;/div>
+    &lt;/div>
+</pre>
+
+</section>
+</body>
+</html>
