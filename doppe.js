@@ -8,6 +8,7 @@
  */
 function Doppe(element, handler, callback) {
     this.element = document.querySelector(element);
+    this.element.style.position = 'fixed';
     if ( !this.element ) return;
     this.handler = this.element.querySelector(handler || element);
     this.isMoving = false;
@@ -16,6 +17,7 @@ function Doppe(element, handler, callback) {
     this.startPosition = this.elementPosition();
     this.size = {x: this.element.clientWidth, y: this.element.clientHeight};
     this.continue = null;
+    this.offsetTop = 14; // Configure font-size to fix drag issue improve
 
     var drg = this;
 
@@ -66,11 +68,20 @@ function Doppe(element, handler, callback) {
     })
 }
 
+Doppe.prototype.set = function(key, val) {
+    if ( this.hasOwnProperty(key) ) {
+        this[key] = val;
+        return;
+    }
+
+    throw new Error('Property ' + key + ' does not exists');
+};
+
 Doppe.prototype.render = function () {
     var offset = this.getOffset();
     var moveto = {
         x: this.mouse.x - offset.x,
-        y: this.mouse.y - offset.y
+        y: this.mouse.y - offset.y - this.offsetTop
     };
 
     this.setPosition(moveto.x, moveto.y);
@@ -103,7 +114,7 @@ Doppe.prototype.elementPosition = function () {
 
 Doppe.prototype.filterPosition = function (x, y) {
     var body = document.getElementsByTagName('body')[0];
-    var mw = body.clientWidth - this.size.x, mh = body.clientHeight - 62;
+    var mw = body.clientWidth - this.size.x, mh = body.clientHeight;
     if ( x > mw ) {
         x = mw;
     }
